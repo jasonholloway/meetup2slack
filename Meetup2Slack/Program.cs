@@ -71,9 +71,7 @@ namespace Meetup2Slack
             _http.PostAsync(_slackWebhookUrl, content).Wait();
         }
 
-
-
-              
+                      
 
 
         static string PrepareSlackMessage(MeetupNotification meetupNews) {
