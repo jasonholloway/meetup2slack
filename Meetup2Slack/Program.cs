@@ -61,7 +61,9 @@ namespace Meetup2Slack
         static IEnumerable<MeetupNotification> GetMeetupNotifications() 
         {
             var httpResult = _http.GetAsync(_meetupNewsUrl).Result.Content.ReadAsStringAsync().Result;
-
+            
+            Trace.TraceInformation("From Meetup: {0}", httpResult);
+            
             return JsonConvert.DeserializeObject<List<MeetupNotification>>(httpResult);
         }
 
