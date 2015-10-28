@@ -41,7 +41,8 @@ namespace Meetup2Slack
                         
                     if(freshNews.Any()) 
                     {
-                        var relevantNews = freshNews.Where(n => n.target.group_id == _meetupGroupId);
+                        var relevantNews = freshNews.Where(n => n.target.group_id == _meetupGroupId)
+                                                        .OrderBy(n => n.id);
                         
                         foreach(var item in relevantNews) { 
                             PostNotificationToSlack(item);
@@ -61,8 +62,6 @@ namespace Meetup2Slack
         static IEnumerable<MeetupNotification> GetMeetupNotifications() 
         {
             var httpResult = _http.GetAsync(_meetupNewsUrl).Result.Content.ReadAsStringAsync().Result;
-            
-            Trace.TraceInformation("From Meetup: {0}", httpResult);
             
             return JsonConvert.DeserializeObject<List<MeetupNotification>>(httpResult);
         }
