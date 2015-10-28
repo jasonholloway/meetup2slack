@@ -25,9 +25,9 @@ namespace Meetup2Slack
 
         static void Main(string[] args) 
         {
-            Trace.WriteLine("MEETUP_NOTIFICATION_URL: " + _meetupNewsUrl);
-            Trace.WriteLine("SLACK_WEBHOOK_URL: " + _slackWebhookUrl);
-            Trace.WriteLine("REDISTOGO_URL: " + _redisUrl);
+            Trace.TraceInformation("MEETUP_NOTIFICATION_URL: {0}", _meetupNewsUrl);
+            Trace.TraceInformation("SLACK_WEBHOOK_URL: {0}", _slackWebhookUrl);
+            Trace.TraceInformation("REDISTOGO_URL: {0}", _redisUrl);
             
             while(true) 
             {
