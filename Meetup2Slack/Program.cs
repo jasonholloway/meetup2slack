@@ -79,9 +79,7 @@ namespace Meetup2Slack
         static string PrepareSlackMessage(MeetupNotification meetupNews) {
             var desc = Regex.Replace(meetupNews.text, @"<b>(.*?)<\/b>", @"*$1*");
 
-            return $"{desc}\n[<{meetupNews.link}|link>]";
-
-
+            return string.Format("{0}\n[<{0}|link>]", desc, meetupNews.link);
         }
 
 
