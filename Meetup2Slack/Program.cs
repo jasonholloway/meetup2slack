@@ -3,6 +3,7 @@ using ServiceStack.Redis;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -24,6 +25,10 @@ namespace Meetup2Slack
 
         static void Main(string[] args) 
         {
+            Trace.WriteLine("MEETUP_NOTIFICATION_URL: " + _meetupNewsUrl);
+            Trace.WriteLine("SLACK_WEBHOOK_URL: " + _slackWebhookUrl);
+            Trace.WriteLine("REDISTOGO_URL: " + _redisUrl);
+            
             while(true) 
             {
                 using(var redis = new RedisClient(_redisUrl)) 
